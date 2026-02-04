@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB-CCMS Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="system-name">
+                <h1>SB-CCMS Dashboard</h1>
+                <p>Signal Brigade Cybersecurity & Communication Management System</p>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="user-details">
+                <div class="user-name" id="userName">Loading...</div>
+                <div class="user-role" id="userRole">Role: Loading...</div>
+            </div>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a></li>
+                    <li><a href="#" data-page="threats">
+                        <i class="fas fa-exclamation-triangle"></i> Threat Management
+                    </a></li>
+                    <li><a href="#" data-page="communications">
+                        <i class="fas fa-satellite-dish"></i> Communications
+                    </a></li>
+                    <li><a href="#" data-page="training">
+                        <i class="fas fa-graduation-cap"></i> Training
+                    </a></li>
+                    <li><a href="#" data-page="reports">
+                        <i class="fas fa-chart-bar"></i> Reports
+                    </a></li>
+                </ul>
+            </nav>
+            
+            <div class="system-status">
+                <div class="status-title">System Status</div>
+                <div class="status-indicator">
+                    <div class="status-dot operational"></div>
+                    <span id="statusComm">Communication: Operational</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot operational"></div>
+                    <span id="statusCyber">Cybersecurity: Protected</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot operational"></div>
+                    <span id="statusNetwork">Network: Stable</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot operational"></div>
+                    <span id="statusBackup">Backup: Active</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-header">
+                <h2 id="dashboardTitle">Cybersecurity Operations Dashboard</h2>
+                <div class="quick-actions">
+                    <button id="refreshBtn" class="action-btn">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button id="scanBtn" class="action-btn">
+                        <i class="fas fa-shield-alt"></i> Security Scan
+                    </button>
+                    <button id="drillBtn" class="action-btn warning">
+                        <i class="fas fa-running"></i> Training Drill
+                    </button>
+                </div>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-exclamation-circle"></i> Active Threats
+                        </div>
+                        <div class="card-value" id="activeThreats">3</div>
+                    </div>
+                    <div class="card-subtitle">Real-time detected threats</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-check-circle"></i> Resolved Threats
+                        </div>
+                        <div class="card-value" id="resolvedThreats">24</div>
+                    </div>
+                    <div class="card-subtitle">Successfully mitigated</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-network-wired"></i> Network Load
+                        </div>
+                        <div class="card-value" id="networkLoad">78%</div>
+                    </div>
+                    <div class="card-subtitle">Current bandwidth utilization</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-server"></i> System Uptime
+                        </div>
+                        <div class="card-value" id="systemUptime">99.8%</div>
+                    </div>
+                    <div class="card-subtitle">Last 30 days</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <i class="fas fa-chart-line"></i> Threat Trends (Last 7 Days)
+                        </div>
+                    </div>
+                    <div class="chart" id="threatTrends">
+                        <!-- Chart bars will be inserted by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <i class="fas fa-chart-area"></i> Network Load (24 Hours)
+                        </div>
+                    </div>
+                    <div class="chart" id="networkLoadChart">
+                        <!-- Chart bars will be inserted by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-title">
+                    <i class="fas fa-exclamation-triangle"></i> Recent Security Alerts
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Severity</th>
+                            <th>Source</th>
+                            <th>Detected</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="threatsTableBody">
+                        <!-- Threats will be loaded by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <p>Ghana Armed Forces - Signal Brigade | SB-CCMS v1.0 | For demonstration purposes only</p>
+                <p>All activities are monitored and logged. Unauthorized access is prohibited.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
